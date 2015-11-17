@@ -7,6 +7,8 @@ Pasos:
 * Crear nueva app en la [Consola de Google App Engine](https://console.developers.google.com/)
 * mkvirtualenv -p /usr/bin/python2.7 miapp
 * Cambiar el nombre de la aplicación en app.yml
+* cp projectname/settings/local.template.py projectname/settings/local.py
+* Crear bbdd en mysql y adaptar projectname/settings/local.py
 * pip install -r requirements.txt
 * pip install -t lib -r requirements_gae.txt
 * dev_appserver.py .

@@ -12,19 +12,29 @@ TEMPLATE_DEBUG = DEBUG
 COMPRESS_ENABLED = True
 
 
-DATABASES = {
-    'default': {
-        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dev_database_name',
-        # The rest is not used with sqlite3:
-        'USER': 'dev_user',
-        'PASSWORD': 'dev_p@ssword',
-        'HOST': 'localhost',
-        'PORT': '',
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    # Running on production App Engine, so use a Google Cloud SQL database.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/cloud-monitoring-external:library',
+            'NAME': 'polls',
+            'USER': 'root',
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'nombre',
+            # The rest is not used with sqlite3:
+            'USER': 'usuario',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 if DEBUG:
     # set INTERNAL_IPS to entire local network
