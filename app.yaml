@@ -14,7 +14,7 @@
 
 # This file specifies your Python application's runtime configuration.
 # See https://cloud.google.com/appengine/docs/managed-vms/config for details.
-application: pruebatronk
+application: escalatronk
 version: 1
 runtime: python27
 api_version: 1
